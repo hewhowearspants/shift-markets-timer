@@ -1,0 +1,160 @@
+@import './variables.scss';
+
+body {
+  background-color: $bg_color;
+}
+
+.App {
+  text-align: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  grid-template-rows: 60px 60px;
+  width: 40%;
+  background-color: $timer_bg_color;
+  background-image: $brushed_alum;
+  border: 1px solid #BBB;
+  border-radius: 5px;
+  font-size: 36px;
+  user-select: none;
+  padding: 5px;
+  box-shadow: 0px 3px 3px rgba(0,0,0,.4);
+
+  .elapsed-time {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    align-self: center;
+    cursor: pointer;
+    font-family: $elapsed_font;
+    background-color: $elapsed_bg_color;
+    color: $elapsed_font_color;
+    border: 1px solid black;
+    padding: 5px;
+    overflow-y: auto;
+
+    &:active {
+      background-color: $elapsed_font_color;
+      color: $elapsed_bg_color;
+    }
+
+  }
+
+  button {
+    font-size: 20px;
+    color: $button_font_color;
+    background-color: $timer_bg_color;
+    background-image: linear-gradient(to top, #BBB 0%, $timer_bg_color 100%);
+    cursor: pointer;
+    border: 1px solid #888;
+    border-radius: 5px;
+    align-self: center;
+    margin: 10px;
+    padding: 5px 0px;
+    box-shadow: 0px 6px 0px #888, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3);
+    transform: translate(0, -4px);
+    transition: 0.1s all ease-in-out; 
+
+      &:hover {
+        color: $elapsed_font_color;
+      }
+
+      &:focus {
+        outline: 0;
+        background-color: whitesmoke;
+      }
+
+      &:active {
+        background-image: linear-gradient(to bottom, #BBB 0%, $timer_bg_color 100%);
+        transform: translate(0, 0px);
+        box-shadow: 0px 2px 0px #888, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3);
+      }
+
+    }
+    
+  .selected {
+    animation: pulsate 0.5s infinite linear;
+
+    @keyframes pulsate {
+      0% { color: $button_font_color }
+      48% { color: $button_font_color }
+      50% { color: $elapsed_font_color }
+      98% { color: $elapsed_font_color }
+      100% { color: $button_font_color }
+    }
+  }
+
+  .pause-button,
+  .resume-button {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+
+  .reset-button {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 60px;
+    min-width: 250px;
+
+    .elapsed-time {
+      grid-area: 1 / 1 / 2 / 5;
+    }
+
+    .pause-button,
+    .resume-button {
+      grid-area: 2 / 3 / 3 / 4;
+    }
+
+    .reset-button {
+      grid-area: 2 / 4 / 3 / 5;
+    }
+  }
+
+}
+
+.split-container {
+  flex: 1;
+  list-style-type: none;
+  padding: 10px;
+  background-color: $timer_bg_color;
+  background-image: $brushed_alum;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 40%;
+  box-shadow: 0px 3px 3px rgba(0,0,0,.4);
+
+  .highlight {
+    background-color: $elapsed_font_color;
+    color: $elapsed_bg_color;
+  }
+
+  li {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: $elapsed_bg_color;
+    color: $elapsed_font_color;
+    font: {
+      family: $elapsed_font;
+      size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    min-width: 250px;
+  }
+}

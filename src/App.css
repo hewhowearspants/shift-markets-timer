@@ -1,0 +1,123 @@
+body {
+  background-color: #444; }
+
+.App {
+  text-align: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box; }
+
+.timer {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  grid-template-rows: 60px 60px;
+  width: 40%;
+  background-color: #CCC;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  border: 1px solid #BBB;
+  border-radius: 5px;
+  font-size: 36px;
+  user-select: none;
+  padding: 5px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4); }
+  .timer .elapsed-time {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    align-self: center;
+    cursor: pointer;
+    font-family: "VT323", monospace;
+    background-color: #111;
+    color: #02fac4;
+    border: 1px solid black;
+    padding: 5px;
+    overflow-y: auto; }
+    .timer .elapsed-time:active {
+      background-color: #02fac4;
+      color: #111; }
+  .timer button {
+    font-size: 20px;
+    color: #444;
+    background-color: #CCC;
+    background-image: linear-gradient(to top, #BBB 0%, #CCC 100%);
+    cursor: pointer;
+    border: 1px solid #888;
+    border-radius: 5px;
+    align-self: center;
+    margin: 10px;
+    padding: 5px 0px;
+    box-shadow: 0px 6px 0px #888, 0px 3px 15px rgba(0, 0, 0, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+    transform: translate(0, -4px);
+    transition: 0.1s all ease-in-out; }
+    .timer button:hover {
+      color: #02fac4; }
+    .timer button:focus {
+      outline: 0;
+      background-color: whitesmoke; }
+    .timer button:active {
+      background-image: linear-gradient(to bottom, #BBB 0%, #CCC 100%);
+      transform: translate(0, 0px);
+      box-shadow: 0px 2px 0px #888, 0px 3px 15px rgba(0, 0, 0, 0.4), inset 0px 1px 0px rgba(255, 255, 255, 0.3); }
+  .timer .selected {
+    animation: pulsate 0.5s infinite linear; }
+
+@keyframes pulsate {
+  0% {
+    color: #444; }
+  48% {
+    color: #444; }
+  50% {
+    color: #02fac4; }
+  98% {
+    color: #02fac4; }
+  100% {
+    color: #444; } }
+  .timer .pause-button,
+  .timer .resume-button {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2; }
+  .timer .reset-button {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3; }
+  @media screen and (max-width: 800px) {
+    .timer {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 60px;
+      min-width: 250px; }
+      .timer .elapsed-time {
+        grid-area: 1 / 1 / 2 / 5; }
+      .timer .pause-button,
+      .timer .resume-button {
+        grid-area: 2 / 3 / 3 / 4; }
+      .timer .reset-button {
+        grid-area: 2 / 4 / 3 / 5; } }
+
+.split-container {
+  flex: 1;
+  list-style-type: none;
+  padding: 10px;
+  background-color: #CCC;
+  background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 40%;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4); }
+  .split-container .highlight {
+    background-color: #02fac4;
+    color: #111; }
+  .split-container li {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #111;
+    color: #02fac4;
+    font-family: "VT323", monospace;
+    font-size: 24px; }
+  @media screen and (max-width: 800px) {
+    .split-container {
+      min-width: 250px; } }
